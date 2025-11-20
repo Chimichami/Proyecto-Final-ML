@@ -23,7 +23,7 @@ Promedios de estadísticas del equipo
 
 2. Generación de 100,000 equipos Pokémon:
 
-  Cada equipo contiene 6 Pokémon escogidos al azar.
+   Cada equipo contiene 6 Pokémon escogidos al azar.
 
    - Para cada equipo se calculan:
 
