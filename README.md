@@ -5,3 +5,11 @@ Luego se entrenan varios modelos de Machine Learning (incluyendo una Red Neurona
 
 Este proyecto cumple con los requisitos de dataset grande, data real y comparación de múltiples modelos.
 
+## 🧠 Objetivo
+
+Desarrollar un modelo capaz de clasificar si un equipo de Pokémon tiene alto ("strong") o bajo ("weak") potencial competitivo, basándose únicamente en:
+
+Sumas de estadísticas del equipo (HP, Attack, Defense, etc.)
+
+Promedios de estadísticas del equipo
+
