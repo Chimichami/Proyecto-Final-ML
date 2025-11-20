@@ -20,7 +20,7 @@ Promedios de estadísticas del equipo
  - Stats base: HP, Attack, Defense, Sp. Attack, Sp. Defense, Speed.
 
  - Tipo primario/secundario, altura, peso.
-"\n"
+
 
 2. Generación de 100,000 equipos Pokémon:
 
@@ -72,5 +72,16 @@ Promedios de estadísticas del equipo
 
   - Matriz de confusión
 
-Comparación de modelos
+  - Comparación de modelos
+
+## 🏗️ Arquitectura del Proyecto
+Proyecto/
+│
+├── descargar_pokeapi.py          # Descarga stats reales desde PokéAPI
+├── generar_dataset_poke_teams.py # Genera 100k equipos Pokémon
+├── pokeproyecto.ipynb            # Notebook con EDA, modelos y resultados
+├── pokemon_base_pokeapi.csv      # Datos reales de Pokémon (salida)
+├── pokemon_teams_100k.csv        # Dataset final para ML
+└── README.md
+
 
