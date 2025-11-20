@@ -13,3 +13,59 @@ Sumas de estadísticas del equipo (HP, Attack, Defense, etc.)
 
 Promedios de estadísticas del equipo
 
+## 📚 Resumen del Proyecto
+
+1. Obtención de datos reales desde PokéAPI:
+
+ - Stats base: HP, Attack, Defense, Sp. Attack, Sp. Defense, Speed.
+
+ - Tipo primario/secundario, altura, peso.
+
+2. Generación de 100,000 equipos Pokémon:
+
+  Cada equipo contiene 6 Pokémon escogidos al azar.
+
+   - Para cada equipo se calculan:
+
+   - sum_hp, sum_attack, ..., sum_speed
+
+   - mean_hp, mean_attack, ..., mean_speed
+
+3. Construcción de un índice sintético de poder (team_power_score):
+
+   Inspirado en:
+
+    - fórmulas de daño de Pokémon,
+
+    - ratings compuestos tipo FIFA,
+
+    - sistemas de valoración de eSports.
+
+    - Incluye interacciones no lineales y ruido estocástico.
+
+4. Clasificación:
+
+  - Se define strong_team = 1 si team_power_score ≥ mediana.
+
+  - Caso contrario: strong_team = 0.
+
+5. Entrenamiento de modelos:
+
+  - Regresión Logística (baseline)
+
+  - Random Forest
+
+  - SVM (RBF)
+
+  - Red Neuronal (Keras MLP)
+
+6. Evaluación final:
+
+  - Accuracy
+
+  - F1-score
+
+  - Matriz de confusión
+
+Comparación de modelos
+
