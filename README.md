@@ -20,7 +20,7 @@ Promedios de estadísticas del equipo
  - Stats base: HP, Attack, Defense, Sp. Attack, Sp. Defense, Speed.
 
  - Tipo primario/secundario, altura, peso.
-
+"\n"
 
 2. Generación de 100,000 equipos Pokémon:
 
