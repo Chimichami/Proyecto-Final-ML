@@ -89,8 +89,17 @@ Proyecto/
 # 📦 Instalación
 1. Clona el repositorio:
    ```powershell
-   git clone https://github.com/usuario/repositorio.git
+   git clone https://github.com/Chimichami/Proyecto-Final-ML.git
    cd repositorio
+   ```
+2. Crea y activa tu entorno virtual:
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\activate
+   ```
+3. Instala dependencias:
+   ```powershell
+   pip install pandas scikit-learn tensorflow matplotlib seaborn ipykernel
    ```
 
    
