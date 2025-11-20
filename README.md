@@ -102,23 +102,44 @@ Proyecto/
    pip install pandas scikit-learn tensorflow matplotlib seaborn ipykernel
    ```
 
-# 🚀 Uso
-1. Descargar datos base desde PokéAPI
-  ```powershell
-  python descargar_pokeapi.py
-  ```
-   Esto generá:
-   pokemon_base_pokeapi.csv
+## 🚀 Uso
 
-2. Generar dataset de equipos (100k filas)
- ```powershell
- python generar_dataset_poke_teams.py
- ```
-   Esto generá:
-   pokemon_teams_100k.csv
+### 1. Descargar datos base desde PokéAPI
 
-3. Entrenar modelos
-   Ejecutar todas las celdas en pokeproyecto.ipynb
+```powershell
+python descargar_pokeapi.py
+```
+
+Esto generará:
+
+```
+pokemon_base_pokeapi.csv
+```
+
+---
+
+### 2. Generar dataset de equipos (100k filas)
+
+```powershell
+python generar_dataset_poke_teams.py
+```
+
+Esto generará:
+
+```
+pokemon_teams_100k.csv
+```
+
+---
+
+### 3. Entrenar modelos
+
+Abre y ejecuta todas las celdas en:
+
+```
+pokeproyecto.ipynb
+```
+
 
 
    
