@@ -139,6 +139,19 @@ Abre y ejecuta todas las celdas en:
 ```
 pokeproyecto.ipynb
 ```
+# 📌 Justificación del Índice team_power_score
+
+El proyecto utiliza un índice sintético que combina estadísticas ofensivas, defensivas y de velocidad, inspirado en:
+
+- Damage Formula oficial de Pokémon
+
+- Overall Rating (OVR) de FIFA
+
+- Champion Strength Score de League of Legends
+
+- Sistemas de poder en eSports
+
+Esto sigue un estándar real de la industria para modelar rendimiento basado en stats numéricos.
 
 
 
