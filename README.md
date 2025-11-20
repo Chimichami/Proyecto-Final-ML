@@ -75,7 +75,6 @@ Promedios de estadísticas del equipo
   - Comparación de modelos
 
 ## 🏗️ Arquitectura del Proyecto
-## 🏗️ Arquitectura del Proyecto
 
 ```txt
 Proyecto/
@@ -87,6 +86,14 @@ Proyecto/
 ├── pokemon_teams_100k.csv          # Dataset final para ML
 └── README.md
 ```
+# 📦 Instalación
+1. Clona el repositorio:
+   ```powershell
+   git clone https://github.com/usuario/repositorio.git
+   cd repositorio
+   ```
+
+   
 
 
 
