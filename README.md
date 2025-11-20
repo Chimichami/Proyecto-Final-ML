@@ -37,13 +37,13 @@ Promedios de estadísticas del equipo
 
    Inspirado en:
 
-    - fórmulas de daño de Pokémon,
+   - fórmulas de daño de Pokémon,
 
-    - ratings compuestos tipo FIFA,
+   - ratings compuestos tipo FIFA,
 
-    - sistemas de valoración de eSports.
+   - sistemas de valoración de eSports.
 
-    - Incluye interacciones no lineales y ruido estocástico.
+   - Incluye interacciones no lineales y ruido estocástico.
 
 
 ### 4. Clasificación:
