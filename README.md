@@ -86,7 +86,7 @@ Proyecto/
 ├── pokemon_teams_100k.csv          # Dataset final para ML
 └── README.md
 ```
-# 📦 Instalación
+## 📦 Instalación
 ### 1. Clona el repositorio:
    ```powershell
    git clone https://github.com/Chimichami/Proyecto-Final-ML.git
@@ -139,7 +139,7 @@ Abre y ejecuta todas las celdas en:
 ```
 pokeproyecto.ipynb
 ```
-# 📌 Justificación del Índice team_power_score
+## 📌 Justificación del Índice team_power_score
 
 El proyecto utiliza un índice sintético que combina estadísticas ofensivas, defensivas y de velocidad, inspirado en:
 
@@ -153,7 +153,7 @@ El proyecto utiliza un índice sintético que combina estadísticas ofensivas, d
 
 Esto sigue un estándar real de la industria para modelar rendimiento basado en stats numéricos.
 
-# 👩‍💻 Autores
+## 👩‍💻 Autores
 Proyecto realizado por:
 - Carranza Ramirez, Cesar Gabriel
 - Garcia Calle, Renato
