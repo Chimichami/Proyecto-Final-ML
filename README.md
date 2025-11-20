@@ -15,14 +15,14 @@ Promedios de estadísticas del equipo
 
 ## 📚 Resumen del Proyecto
 
-1. Obtención de datos reales desde PokéAPI:
+### 1. Obtención de datos reales desde PokéAPI:
 
  - Stats base: HP, Attack, Defense, Sp. Attack, Sp. Defense, Speed.
 
  - Tipo primario/secundario, altura, peso.
 
 
-2. Generación de 100,000 equipos Pokémon:
+### 2. Generación de 100,000 equipos Pokémon:
 
    Cada equipo contiene 6 Pokémon escogidos al azar.
 
@@ -33,7 +33,7 @@ Promedios de estadísticas del equipo
    - mean_hp, mean_attack, ..., mean_speed
 
 
-3. Construcción de un índice sintético de poder (team_power_score):
+### 3. Construcción de un índice sintético de poder (team_power_score):
 
    Inspirado en:
 
@@ -46,14 +46,14 @@ Promedios de estadísticas del equipo
     - Incluye interacciones no lineales y ruido estocástico.
 
 
-4. Clasificación:
+### 4. Clasificación:
 
   - Se define strong_team = 1 si team_power_score ≥ mediana.
 
   - Caso contrario: strong_team = 0.
 
 
-5. Entrenamiento de modelos:
+### 5. Entrenamiento de modelos:
 
   - Regresión Logística (baseline)
 
@@ -64,7 +64,7 @@ Promedios de estadísticas del equipo
   - Red Neuronal (Keras MLP)
 
 
-6. Evaluación final:
+### 6. Evaluación final:
 
   - Accuracy
 
@@ -87,17 +87,17 @@ Proyecto/
 └── README.md
 ```
 # 📦 Instalación
-1. Clona el repositorio:
+### 1. Clona el repositorio:
    ```powershell
    git clone https://github.com/Chimichami/Proyecto-Final-ML.git
    cd repositorio
    ```
-2. Crea y activa tu entorno virtual:
+### 2. Crea y activa tu entorno virtual:
    ```powershell
    python -m venv .venv
    .\.venv\Scripts\activate
    ```
-3. Instala dependencias:
+### 3. Instala dependencias:
    ```powershell
    pip install pandas scikit-learn tensorflow matplotlib seaborn ipykernel
    ```
