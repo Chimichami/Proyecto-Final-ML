@@ -75,13 +75,18 @@ Promedios de estadísticas del equipo
   - Comparación de modelos
 
 ## 🏗️ Arquitectura del Proyecto
+## 🏗️ Arquitectura del Proyecto
+
+```txt
 Proyecto/
 │
-├── descargar_pokeapi.py          # Descarga stats reales desde PokéAPI
-├── generar_dataset_poke_teams.py # Genera 100k equipos Pokémon
-├── pokeproyecto.ipynb            # Notebook con EDA, modelos y resultados
-├── pokemon_base_pokeapi.csv      # Datos reales de Pokémon (salida)
-├── pokemon_teams_100k.csv        # Dataset final para ML
+├── descargar_pokeapi.py            # Descarga stats reales desde PokéAPI
+├── generar_dataset_poke_teams.py   # Genera 100k equipos Pokémon
+├── pokeproyecto.ipynb              # Notebook con EDA, modelos y resultados
+├── pokemon_base_pokeapi.csv        # Datos reales de Pokémon
+├── pokemon_teams_100k.csv          # Dataset final para ML
 └── README.md
+```
+
 
 
