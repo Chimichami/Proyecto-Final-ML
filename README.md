@@ -153,6 +153,12 @@ El proyecto utiliza un índice sintético que combina estadísticas ofensivas, d
 
 Esto sigue un estándar real de la industria para modelar rendimiento basado en stats numéricos.
 
+# 👩‍💻 Autores
+Proyecto realizado por:
+- Carranza Ramirez, Cesar Gabriel
+- Garcia Calle, Renato
+- Mercado Barbieri, Ariana Valeria
+- Paca Sotero, Jose Francisco
 
 
    
