@@ -1,10 +1,12 @@
 import requests
 import pandas as pd
 from time import sleep
+from pathlib import Path
 
 #trabajar todo en entorno .venv
 
 BASE_URL = "https://pokeapi.co/api/v2"
+OUTPUT_PATH = Path("data/pokemon_base_pokeapi.csv")
 
 def get_all_pokemon(limit=1000): 
     url = f"{BASE_URL}/pokemon?limit={limit}&offset=0"
@@ -63,8 +65,9 @@ def descargar_pokemon_detalle(limit=1000):
             sleep(0.2)
 
     df = pd.DataFrame(registros)
-    df.to_csv("pokemon_base_pokeapi.csv", index=False)
-    print(f"Guardado pokemon_base_pokeapi.csv con {len(df)} filas y {len(df.columns)} columnas")
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(OUTPUT_PATH, index=False)
+    print(f"Guardado {OUTPUT_PATH} con {len(df)} filas y {len(df.columns)} columnas")
 
 if __name__ == "__main__":
     descargar_pokemon_detalle(limit=1000)  

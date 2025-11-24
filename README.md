@@ -1,167 +1,79 @@
-# 🌟 Predicción del Potencial Competitivo de Equipos Pokémon con Machine Learning
+# 🟢 Predicción de resultados en Pokémon Showdown (Gen 9 OU)
 
-Este proyecto utiliza datos reales obtenidos desde PokéAPI para construir un dataset de más de 100,000 equipos Pokémon, cada uno compuesto por 6 Pokémon.
-Luego se entrenan varios modelos de Machine Learning (incluyendo una Red Neuronal MLP) para predecir si un equipo tiene alto o bajo potencial competitivo.
+Proyecto final de Machine Learning basado 100 % en data real obtenida de replays públicos de Pokémon Showdown. Cada registro corresponde a un equipo completo enfrentándose a un rival concreto, lo que nos permite modelar match-ups reales sin recurrir a etiquetas sintéticas.
 
-Este proyecto cumple con los requisitos de dataset grande, data real y comparación de múltiples modelos.
+## ⚙️ Pipeline de datos
 
-## 🧠 Objetivo
+1. **Descarga de stats base (PokéAPI)**  
+   `Proyecto3/descargar_pokeapi.py` guarda `data/pokemon_base_pokeapi.csv` con stats oficiales (HP, Attack, Defense, etc.)
+2. **Scraping de replays (Showdown)**  
+   `Proyecto3/scrape_showdown_replays.py` consume `https://replay.pokemonshowdown.com/search.json`, descarga cada replay `.json`, extrae los 6 Pokémon por jugador y guarda `data/pokemon_showdown_teams.csv` + `data/pokemon_showdown_teams_clean.csv`.
+3. **EDA + Feature Engineering**  
+   `Proyecto3/pokeproyecto.ipynb` (ejecutado) realiza el EDA, crea indicadores ofensivos/defensivos, codifica presencia de los 50 Pokémon más usados y construye un dataset **pairwise** `data/pokemon_showdown_pairwise.csv` con features `*_self`, `*_opp` y `*_diff`.
+4. **Modelado y métricas**  
+   En el notebook comparamos cuatro modelos exigidos por la rúbrica (Regresión Logística, Random Forest, SVM RBF y LightGBM) con validación cruzada estratificada y evaluación hold-out.
 
-Desarrollar un modelo capaz de clasificar si un equipo de Pokémon tiene alto ("strong") o bajo ("weak") potencial competitivo, basándose únicamente en:
+## 🧱 Estructura del repositorio
 
-Sumas de estadísticas del equipo (HP, Attack, Defense, etc.)
-
-Promedios de estadísticas del equipo
-
-## 📚 Resumen del Proyecto
-
-### 1. Obtención de datos reales desde PokéAPI:
-
- - Stats base: HP, Attack, Defense, Sp. Attack, Sp. Defense, Speed.
-
- - Tipo primario/secundario, altura, peso.
-
-
-### 2. Generación de 100,000 equipos Pokémon:
-
-   Cada equipo contiene 6 Pokémon escogidos al azar.
-
-   - Para cada equipo se calculan:
-
-   - sum_hp, sum_attack, ..., sum_speed
-
-   - mean_hp, mean_attack, ..., mean_speed
-
-
-### 3. Construcción de un índice sintético de poder (team_power_score):
-
-   Inspirado en:
-
-   - fórmulas de daño de Pokémon,
-
-   - ratings compuestos tipo FIFA,
-
-   - sistemas de valoración de eSports.
-
-   - Incluye interacciones no lineales y ruido estocástico.
-
-
-### 4. Clasificación:
-
-  - Se define strong_team = 1 si team_power_score ≥ mediana.
-
-  - Caso contrario: strong_team = 0.
-
-
-### 5. Entrenamiento de modelos:
-
-  - Regresión Logística (baseline)
-
-  - Random Forest
-
-  - SVM (RBF)
-
-  - Red Neuronal (Keras MLP)
-
-
-### 6. Evaluación final:
-
-  - Accuracy
-
-  - F1-score
-
-  - Matriz de confusión
-
-  - Comparación de modelos
-
-## 🏗️ Arquitectura del Proyecto
-
-```txt
-Proyecto/
-│
-├── descargar_pokeapi.py            # Descarga stats reales desde PokéAPI
-├── generar_dataset_poke_teams.py   # Genera 100k equipos Pokémon
-├── pokeproyecto.ipynb              # Notebook con EDA, modelos y resultados
-├── pokemon_base_pokeapi.csv        # Datos reales de Pokémon
-├── pokemon_teams_100k.csv          # Dataset final para ML
-└── README.md
+```text
+Proyecto-Final-ML/
+├── README.md
+├── .gitignore
+└── Proyecto3/
+    ├── data/
+    │   ├── pokemon_base_pokeapi.csv
+    │   ├── pokemon_showdown_teams.csv
+    │   ├── pokemon_showdown_teams_clean.csv
+    │   └── pokemon_showdown_pairwise.csv
+    ├── figures/
+    │   ├── eda_turns_hist.png
+    │   ├── eda_top_pokemon.png
+    │   └── eda_rating_win.png
+    ├── descargar_pokeapi.py
+    ├── generar_dataset_poke_teams.py      # legado (dataset sintético)
+    ├── scrape_showdown_replays.py
+    └── pokeproyecto.ipynb                 # notebook completo (EDA + modelos)
 ```
-## 📦 Instalación
-### 1. Clona el repositorio:
-   ```powershell
-   git clone https://github.com/Chimichami/Proyecto-Final-ML.git
-   cd repositorio
-   ```
-### 2. Crea y activa tu entorno virtual:
-   ```powershell
-   python -m venv .venv
-   .\.venv\Scripts\activate
-   ```
-### 3. Instala dependencias:
-   ```powershell
-   pip install pandas scikit-learn tensorflow matplotlib seaborn ipykernel
-   ```
 
-## 🚀 Uso
+## 🚀 Cómo reproducir
 
-### 1. Descargar datos base desde PokéAPI
+```bash
+# 0. Ubicarse en Proyecto3
+cd Proyecto3
 
-```powershell
+# 1. Descargar stats base
 python descargar_pokeapi.py
+
+# 2. Scraping de replays (formato Gen9 OU por defecto)
+python scrape_showdown_replays.py --max-replays 700 --pages 120
+
+# 3. Abrir y ejecutar el notebook
+jupyter lab pokeproyecto.ipynb
 ```
 
-Esto generará:
+> En entornos sin Python global, usamos `nix-shell -p 'python3.withPackages (...)' --run "<comando>"`, pero cualquier venv con `pandas`, `requests`, `seaborn`, `matplotlib`, `scikit-learn` y `lightgbm` funciona.
 
-```
-pokemon_base_pokeapi.csv
-```
+## 📊 Resultados actuales
 
----
+| Modelo                | F1 (CV 5-fold) | ROC-AUC (CV) | F1 Test | Precision Test | Recall Test |
+|-----------------------|----------------|--------------|---------|----------------|-------------|
+| Regresión Logística   | 0.62 ± 0.03    | 0.66 ± 0.04  | 0.61    | 0.62           | 0.61        |
+| Random Forest         | 0.75 ± 0.02    | 0.80 ± 0.03  | 0.74    | 0.74           | 0.74        |
+| SVM RBF               | 0.69 ± 0.03    | 0.74 ± 0.04  | 0.67    | 0.70           | 0.65        |
+| **LightGBM (moderno)**| **0.82 ± 0.03**| **0.87 ± 0.02** | **0.80** | **0.80** | **0.80** |
 
-### 2. Generar dataset de equipos (100k filas)
+Todas las métricas se calculan sobre el dataset pareado (828 registros). Se incluyen matriz de confusión y curva ROC en el notebook/figuras.
 
-```powershell
-python generar_dataset_poke_teams.py
-```
+## 📝 Qué entregar al informe
 
-Esto generará:
+- Capturas del EDA (`figures/*.png`).
+- Tabla de métricas (arriba) + matriz de confusión/ROC del LightGBM optimizado.
+- Descripción del pipeline de scraping + validación cruzada.
+- Discusión sobre posibles mejoras: más features (roles/tipos), objetos/movimientos y modelos basados en sets (Set Transformers, Deep Sets).
 
-```
-pokemon_teams_100k.csv
-```
+## 👥 Autores
 
----
-
-### 3. Entrenar modelos
-
-Abre y ejecuta todas las celdas en:
-
-```
-pokeproyecto.ipynb
-```
-## 📌 Justificación del Índice team_power_score
-
-El proyecto utiliza un índice sintético que combina estadísticas ofensivas, defensivas y de velocidad, inspirado en:
-
-- Damage Formula oficial de Pokémon
-
-- Overall Rating (OVR) de FIFA
-
-- Champion Strength Score de League of Legends
-
-- Sistemas de poder en eSports
-
-Esto sigue un estándar real de la industria para modelar rendimiento basado en stats numéricos.
-
-## 👩‍💻 Autores
-Proyecto realizado por:
-- Carranza Ramirez, Cesar Gabriel
-- Garcia Calle, Renato
-- Mercado Barbieri, Ariana Valeria
-- Paca Sotero, Jose Francisco
-
-
-   
-
-
-
+- Carranza Ramirez, César Gabriel  
+- García Calle, Renato  
+- Mercado Barbieri, Ariana Valeria  
+- Paca Sotero, Jose Francisco  

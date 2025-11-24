@@ -336,13 +336,13 @@ def main() -> None:
     parser.add_argument(
         "--base-stats",
         type=Path,
-        default=Path("pokemon_base_pokeapi.csv"),
+        default=Path("data/pokemon_base_pokeapi.csv"),
         help="CSV con stats base descargados de PokéAPI",
     )
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("pokemon_showdown_teams.csv"),
+        default=Path("data/pokemon_showdown_teams.csv"),
         help="Archivo de salida con features agregadas",
     )
     parser.add_argument("--log-level", default="INFO")
@@ -375,6 +375,7 @@ def main() -> None:
         logging.error("No se generaron filas; revisar filtros o formato.")
         return
     df = pd.DataFrame(all_rows)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(args.output, index=False)
     logging.info("Dataset guardado en %s (%d filas)", args.output, len(df))
 

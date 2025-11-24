@@ -1,15 +1,20 @@
 import pandas as pd
 import numpy as np
 import random
+from pathlib import Path
 
 #trabajar todo en entorno .venv
+
+DATA_DIR = Path("data")
+BASE_DATA = DATA_DIR / "pokemon_base_pokeapi.csv"
+OUTPUT_DATA = DATA_DIR / "pokemon_teams_100k.csv"
 
 # Semillas para reproducibilidad
 random.seed(42)
 np.random.seed(42)
 
 # 1. Leer el dataset base de Pokémon (generado con PokéAPI)
-df = pd.read_csv("pokemon_base_pokeapi.csv")
+df = pd.read_csv(BASE_DATA)
 
 # Elegimos las columnas numéricas que usaremos como features
 stat_cols = ["hp", "attack", "defense", "sp_attack", "sp_defense", "speed"]
@@ -106,6 +111,7 @@ print(big_df.head())
 print(big_df.shape)
 
 # 5. Guardar a CSV
-big_df.to_csv("pokemon_teams_100k.csv", index=False)
-print("Guardado pokemon_teams_100k.csv")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+big_df.to_csv(OUTPUT_DATA, index=False)
+print(f"Guardado {OUTPUT_DATA}")
 print(f"Umbral (mediana) de team_power_score: {threshold:.2f}")
